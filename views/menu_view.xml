@@ -1,0 +1,18 @@
+  
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem name="estetica" id="estetica.menu_root" />
+
+        <!-- menu categories // actions -->
+        <menuitem name="Clientes" id="estetica.menu_clientes_list" parent="estetica.menu_root" action="estetica.action_window_clientes" />
+        <menuitem name="Empleados" id="estetica.menu_empleados_list" parent="estetica.menu_root" action="estetica.action_window_empleados" />
+        <menuitem name="Facturas" id="estetica.menu_facturas_list" parent="estetica.menu_root" action="estetica.action_window_facturas" />
+        <menuitem name="Productos" id="estetica.menu_productos_list" parent="estetica.menu_root" action="estetica.action_window_productos" />
+        <menuitem name="Proveedor" id="estetica.menu_proveedor_list" parent="estetica.menu_root" action="estetica.action_window_proveedor" />
+        <menuitem name="Tratamientos" id="estetica.menu_tratam_list" parent="estetica.menu_root" action="estetica.action_window_tratam" />
+
+
+
+        </data>
+</odoo>

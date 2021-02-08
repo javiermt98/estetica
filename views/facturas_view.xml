@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="estetica.listado_facturas_tree">
+            <field name="name">Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="fecha" />
+                    <field name="cliente_id"/>
+                    <field name="total" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="estetica.listado_facturas_form">
+            <field name="name">Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <form string="Nueva Factura">
+                    <sheet>
+                        <notebook>
+                            <page string="Factura">
+                                <group>
+                                    <field name="name" />
+                                    <field name="fecha" />
+                                    <field name="base" />
+                                    <field name="iva" />
+                                    <field name="cliente_id" />
+                                </group>
+                            </page>
+                            <page string="Contenido">
+                                <group>
+                                    <field name="detallef_ids" >
+                                        <tree>
+                                            <field name="productos_id"/>
+                                            <field name="cantidad" />
+                                        </tree>
+                                    </field>
+                                    <field name="tratam_id" />
+                                    
+                                    <field name="total" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="estetica.listado_facturas_graph">
+            <field name="name">Gráfico de Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <graph type="bar" order="asc">
+                    <field name="name" type="row" interval="week" />
+                    <field name="total" type="measure" />
+                </graph>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="estetica.listado_facturas_calendar">
+            <field name="name">Gráfico de Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <calendar date_start="fecha" color="name" mode="week" form_view_id="estetica.listado_facturas_form" quick_add="False" event_open_popup="True" >
+                    <field name="name" />
+                    <field name="total" />
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="estetica.listado_facturas_pivot">
+            <field name="name">Pivot de Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <pivot string="Pivot de Facturas">
+                    <field name="name" />
+                    <field name="fecha" type="row" interval="month"/>
+                    <field name="base" />
+                    <field name="iva" />
+                    <field name="cliente_id" />
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="estetica.action_window_facturas">
+            <field name="name">Calendario de Facturas</field>
+            <field name="res_model">estetica.facturas_model</field>
+            <field name="view_mode">tree,form,graph,calendar,pivot</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+<data>
+
+<record model="ir.ui.view" id="estetica.listado_tratam_tree">
+			<field name="name">Tratamiento</field>
+			<field name="model">estetica.tratam_model</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="name" />
+                    <field name="duracion"/>
+                    <field name="precio" />
+				</tree>
+			</field>
+        </record>
+
+        <record model="ir.ui.view" id="estetica.listado_tratam_form">
+			<field name="name">Tratamiento</field>
+			<field name="model">estetica.tratam_model</field>
+			<field name="arch" type="xml">
+				<form string="Nuevo Producto">
+					<sheet>
+						<group>
+                            <field name="name" />
+                            <field name="duracion"/>
+                            <field name="precio" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="estetica.action_window_tratam">
+			<field name="name">Tratamiento</field>
+			<field name="res_model">estetica.tratam_model</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+</data>
+</odoo>

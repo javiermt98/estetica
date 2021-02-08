@@ -1,0 +1,63 @@
+<odoo>
+<data>
+
+    <record model="ir.ui.view" id="estetica.listado_clientes_tree">
+			<field name="name">	Clientes</field>
+			<field name="model">estetica.clientes_model</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="ape" />
+					<field name="telf" widget="phone" />
+					<field name="email" widget="email" />
+					<field name="facturas_ids" widget="many2many_tags" />
+				</tree>
+			</field>
+    </record>
+
+        <record model="ir.ui.view" id="estetica.listado_clientes_form">
+			<field name="name">Clientes</field>
+			<field name="model">estetica.clientes_model</field>
+			<field name="arch" type="xml">
+				<form string="Nuevo Cliente">
+					<sheet>
+						<notebook>
+                            <page string="Información Personal">
+								<group>
+                                    <field name="name" />
+                                    <field name="ape" />
+                                    <field name="telf"/>
+                                    <field name="email"/>
+                                </group>
+                            </page>
+                            <page string="Facturas">
+                                <group>
+                                    <field name="facturas_ids">
+                                        <tree>
+                                            <field name="name" />
+                                            <field name="fecha" />
+                                            <field name="total" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- <page string="Tratamientos">
+                                <group>
+                                <field name="tratam_ids" />
+                                </group>
+                            </page> -->
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="estetica.action_window_clientes">
+			<field name="name">Clientes</field>
+			<field name="res_model">estetica.clientes_model</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+</data>
+</odoo>

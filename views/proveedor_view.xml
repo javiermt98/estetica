@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="estetica.listado_proveedor_tree">
+            <field name="name">Proveedor</field>
+            <field name="model">estetica.proveedor_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="telf" widget="phone" />
+                    <field name="email" widget="email" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="estetica.listado_proveedor_form">
+            <field name="name">Proveedor</field>
+            <field name="model">estetica.proveedor_model</field>
+            <field name="arch" type="xml">
+                <form string="Nuevo Proveedor">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="telf" />
+                            <field name="email"/>
+                            <field name="prod_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="stock" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="estetica.action_window_proveedor">
+            <field name="name">Proveedor</field>
+            <field name="res_model">estetica.proveedor_model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

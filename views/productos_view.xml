@@ -1,0 +1,40 @@
+<odoo>
+<data>
+
+<record model="ir.ui.view" id="estetica.listado_productos_tree">
+			<field name="name">Producto</field>
+			<field name="model">estetica.productos_model</field>
+			<field name="arch" type="xml">
+				<tree decoration-danger="stock &lt;= 5">
+                    <field name="name" />
+                    <field name="precio"/>
+                    <field name="stock" />
+				</tree>
+			</field>
+        </record>
+
+        <record model="ir.ui.view" id="estetica.listado_productos_form">
+			<field name="name">Producto</field>
+			<field name="model">estetica.productos_model</field>
+			<field name="arch" type="xml">
+				<form string="Nuevo Producto">
+					<sheet>
+						<group>
+                            <field name="name" />
+                            <field name="descripcion" />
+                            <field name="precio"/>
+                            <field name="stock" />
+                            <field name="proveedor_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="estetica.action_window_productos">
+			<field name="name">Productos</field>
+			<field name="res_model">estetica.productos_model</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+</data>
+</odoo>
