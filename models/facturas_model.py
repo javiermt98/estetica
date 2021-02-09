@@ -24,13 +24,21 @@ class facturas_model(models.Model):
         self.ensure_one()
         self.total = (((self.base*int(self.iva))/100)+self.base)
 
-    @api.depends('detallef_ids', 'tratam_id')
+    @api.depends('detallef_ids','tratam_id')
     def _calc_base(self):
         self.ensure_one()
         suma = 0
         for i in self.detallef_ids:
             suma += i.productos_id.precio*i.cantidad
-            i.productos_id.stock-=i.cantidad #Me coge el doble de lo que debería (Si pongo 1 me resta 2) ¿?
         for i in self.tratam_id:
             suma += i.precio
         self.base = suma
+
+    @api.depends('detallef_ids')
+    def actualizaStock(self):
+        self.ensure_one()
+        for i in self.detallef_ids:
+            i.cantidad -= i.productos_id.cantidad
+
+
+
