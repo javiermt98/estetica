@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 class empleados_model(models.Model):
     _name = 'estetica.empleados_model'
     _description = 'Empleados'
+    _sql_constraints = [("dni_uniq", "UNIQUE (dni)", "No puede haber dos DNI iguales")]
 
     name = fields.Char(string="Nombre", required=True, size=20)
     ape = fields.Char(string="Apellidos", required=True, size=40)

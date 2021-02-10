@@ -9,6 +9,7 @@
                     <field name="fecha" />
                     <field name="cliente_id" />
                     <field name="total" />
+
                 </tree>
             </field>
         </record>
@@ -18,31 +19,31 @@
             <field name="arch" type="xml">
                 <form string="Nueva Factura">
                     <sheet>
-
-                        <group id="grupopadre">
+                        
+                        <group>
                             <group id="grupoizq">
                                 <field name="name" />
                                 <field name="fecha" />
                                 <field name="cliente_id" />
-                                <field name="detallef_ids">
-                                    <tree>
-                                        <field name="productos_id" />
-                                        <field name="cantidad" />
-                                        <field name="iva" />
-                                    </tree>
-                                </field>
-
                             </group>
                             <group>
                                 <field name="base" />
                                 <field name="total" />
-                                <field name="tratam_id" />
-
                             </group>
-                        </group>
+                            <field name="detallef_ids">
+                                <tree>
+                                    <field name="productos_id" />
+                                    <field name="cantidad" />
+                                    <field name="iva" />
+                                </tree>
+                            </field>
+                            <field name="tratam_id" />
 
+                        </group>
+                        
                     </sheet>
                 </form>
+
             </field>
         </record>
         <record model="ir.ui.view" id="estetica.listado_facturas_graph">
