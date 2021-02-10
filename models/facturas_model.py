@@ -14,22 +14,22 @@ class facturas_model(models.Model):
     base = fields.Float(string="Base", compute="_calc_base", store=True)
     cliente_id = fields.Many2one("estetica.clientes_model", string="Cliente")
     detallef_ids = fields.One2many("estetica.detfac_model","facturas_id", string="Productos")
-    ivaproducto = fields.One2many("estetica.detfac_model","iva", string="Productos")
     tratam_id = fields.Many2many("estetica.tratam_model", "factura_id", string="Tratamientos")
     total = fields.Float(string="Total", compute="_calc_iva", store=True)
 
 
-    # @api.depends('detallef_ids', 'base')
-    # def _calc_iva(self):
-    #     self.ensure_one()
-    #     self.total = (((self.base*int(self.detallef.iva))/100)+self.base)
+    @api.depends('tratam_id', 'base')
+    def _calc_iva(self):
+        self.ensure_one()
+        total = 0
+        for i in self.tratam_id:
+            total+= (self.base*int(i.iva)/100)+self.base
+        self.total = total
 
-    @api.depends('detallef_ids','tratam_id')
+    @api.depends('tratam_id')
     def _calc_base(self):
         self.ensure_one()
         suma = 0
-        for i in self.detallef_ids:
-            suma += i.productos_id.precio*i.cantidad
         for i in self.tratam_id:
             suma += i.precio
         self.base = suma
