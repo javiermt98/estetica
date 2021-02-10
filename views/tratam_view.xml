@@ -8,7 +8,8 @@
 				<tree>
                     <field name="name" />
                     <field name="duracion"/>
-                    <field name="precio" />
+					<field name="precio" />
+					<field name="iva" />
 				</tree>
 			</field>
         </record>
@@ -22,7 +23,8 @@
 						<group>
                             <field name="name" />
                             <field name="duracion"/>
-                            <field name="precio" />
+							<field name="precio" />
+							<field name="iva" />
                         </group>
                     </sheet>
                 </form>

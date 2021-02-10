@@ -14,3 +14,5 @@ class tratam_model(models.Model):
     emple_id = fields.Many2one("estetica.empleados_model", string="Empleado/a")
     clientes_ids = fields.Many2many("estetica.clientes_model", "tratam_ids", string="Clientes")
     factura_id = fields.Many2many("estetica.facturas_model", "tratam_id" ,string="Facturas")
+    iva = fields.Selection(string="IVA", default='21', selection=[('21','21'),('15', '15'),('7', '7'),('0', '0')], required=True)
+

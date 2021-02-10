@@ -12,7 +12,8 @@
 					<field name="email" widget="email" />
 					<field name="facturas_ids" widget="many2many_tags" />
 				</tree>
-			</field>
+            </field>
+            
     </record>
 
         <record model="ir.ui.view" id="estetica.listado_clientes_form">
