@@ -17,6 +17,7 @@ class facturas_model(models.Model):
     detallef_ids = fields.One2many("estetica.detfac_model","facturas_id", string="Productos")
     tratam_id = fields.Many2many("estetica.tratam_model", "factura_id", string="Tratamientos")
     total = fields.Float(string="Total", compute="_calc_iva", store=True)
+    active = fields.Boolean(readonly=True, default=True)
 
 
     @api.depends('tratam_id', 'detallef_ids')
@@ -49,5 +50,24 @@ class facturas_model(models.Model):
                 i.productos_id.stock -= i.cantidad
 
 
+    def pagarFactura(self):
+        self.ensure_one()
+        if not self.active:
+            raise ValidationError("La factura ya está pagada")
+        else:
+            self.active=False
+
+    def borrarPagadas(self):
+        self.ensure_one()
+        facturasPagadas = self.search([('active','=','False')])
+        for i in facturasPagadas:
+            i.unlink()
+    
+
+    def recuperarFactura(self):
+        if self.active:
+            raise ValidationError("La factura aun no está pagada")
+        else:
+            self.active=True
 
 

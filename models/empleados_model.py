@@ -16,7 +16,6 @@ class empleados_model(models.Model):
     email = fields.Char(string="email", required=True )
     fechanacim = fields.Date(string="Fecha de Nacimiento", required=True, default=fields.Date.context_today)
     foto = fields.Binary(string="Foto")
-    tratamientos_ids = fields.One2many("estetica.tratam_model", "emple_id", string="Tratamientos")
 
     
 

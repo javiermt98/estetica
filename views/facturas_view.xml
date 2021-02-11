@@ -18,6 +18,11 @@
             <field name="model">estetica.facturas_model</field>
             <field name="arch" type="xml">
                 <form string="Nueva Factura">
+                <header>
+                    <button name="pagarFactura" type="object" confirm="¿Pagar la factura actual?" string="Pagar Factura" class="oe_highlight" />
+                    <button name="recuperarFactura" type="object" confirm="¿Recuperar la factura actual?" string="Recuperar Factura" class="oe_highlight" />
+                    <button name="borrarPagadas" type="object" confirm="Está a punto de borrar todas las facturas pagadas, ¿quiere continuar?" string="Borrar Facturas Pagadas" class="oe_highlight" />
+                </header>
                     <sheet>
                         
                         <group>
@@ -78,6 +83,24 @@
                     <field name="cliente_id" />
                     <field name="total" type="measure" />
                 </pivot>
+            </field>
+        </record>
+
+        
+        <record model="ir.ui.view" id="estetica.listado_facturas_search">
+            <field name="name">Filtros de Facturas</field>
+            <field name="model">estetica.facturas_model</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="fecha" />
+                    <field name="total" />
+                    <field name="cliente_id" />
+                    <filter string="Facturas Pagadas" name="factPagadas" domain="[('active','=',False)]" />
+                    <group expand="0" string="Agrupar por">
+                        <filter name="cliente_id" context="{'group_by':'cliente_id'}" />
+                    </group>
+                </search>
             </field>
         </record>
 
