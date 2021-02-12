@@ -13,9 +13,9 @@ class facturas_model(models.Model):
     name = fields.Char(string="Referencia", required=True)
     fecha = fields.Date(string="Fecha", required=True, default=date.today())
     base = fields.Float(string="Base", compute="_calc_base", store=True)
-    cliente_id = fields.Many2one("estetica.clientes_model", string="Cliente")
-    detallef_ids = fields.One2many("estetica.detfac_model","facturas_id", string="Productos")
-    tratam_id = fields.Many2many("estetica.tratam_model", "factura_id", string="Tratamientos")
+    cliente_id = fields.Many2one("estetica.clientes_model", string="Cliente", ondelete='cascade')
+    detallef_ids = fields.One2many("estetica.detfac_model","facturas_id", string="Productos", ondelete='cascade')
+    tratam_id = fields.Many2many("estetica.tratam_model", "factura_id", string="Tratamientos", ondelete='cascade')
     total = fields.Float(string="Total", compute="_calc_iva", store=True)
     active = fields.Boolean(readonly=True, default=True)
 
@@ -48,7 +48,6 @@ class facturas_model(models.Model):
                 raise ValidationError("No hay suficiente Stock! Cantidad Disponible: "+str(i.productos_id.stock))
             else:
                 i.productos_id.stock -= i.cantidad
-
 
     def pagarFactura(self):
         self.ensure_one()

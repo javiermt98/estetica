@@ -8,7 +8,7 @@ class detfac_model(models.Model):
     _description = 'estetica.detfac_model'
 
     
-    facturas_id = fields.Many2one("estetica.facturas_model", "Factura", required="True")
+    facturas_id = fields.Many2one("estetica.facturas_model", "Factura", required="True", ondelete='cascade')
     productos_id = fields.Many2one("estetica.productos_model", "Productos", required="True")
     iva = fields.Selection(string="IVA", default='21', selection=[('21','21'),('15', '15'),('7', '7'),('0', '0')], required=True)
     cantidad = fields.Integer(string="Cantidad", default=1, required=True)
