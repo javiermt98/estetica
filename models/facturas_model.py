@@ -12,7 +12,7 @@ class facturas_model(models.Model):
 
     name = fields.Char(string="Referencia", required=True)
     fecha = fields.Date(string="Fecha", required=True, default=date.today())
-    base = fields.Float(string="Base", compute="_calc_base", store=True)
+    base = fields.Float(string="Base", compute="_calc_base", store=True, required=True)
     cliente_id = fields.Many2one("estetica.clientes_model", string="Cliente", ondelete='cascade')
     detallef_ids = fields.One2many("estetica.detfac_model","facturas_id", string="Productos", ondelete='cascade')
     tratam_id = fields.Many2many("estetica.tratam_model", "factura_id", string="Tratamientos", ondelete='cascade')
@@ -29,6 +29,8 @@ class facturas_model(models.Model):
         for i in self.detallef_ids:
             total += i.productos_id.precio*i.cantidad*(int(i.iva)/100+1)
         self.total = total
+        if self.total == 0:
+            raise ValidationError("No puede haber una factura sin Productos")
 
     @api.depends('tratam_id','detallef_ids')
     def _calc_base(self):
@@ -58,12 +60,13 @@ class facturas_model(models.Model):
 
     def borrarPagadas(self):
         self.ensure_one()
-        facturasPagadas = self.search([('active','=','False')])
+        facturasPagadas = self.search([("active","!=","True")])
         for i in facturasPagadas:
             i.unlink()
     
 
     def recuperarFactura(self):
+        self.ensure_one()
         if self.active:
             raise ValidationError("La factura aun no está pagada")
         else:
