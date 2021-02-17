@@ -7,8 +7,8 @@
                 <tree>
                     <field name="name" />
                     <field name="ape" />
-                    <field name="telf" widget="phone" />
-                    <field name="email" widget="email" />
+                    <field name="telf" widget="phone" groups="estetica.estetica_group_emple"/>
+                    <field name="email" widget="email" groups="estetica.estetica_group_emple"/>
                 </tree>
             </field>
         </record>
@@ -27,10 +27,10 @@
                                     <group>
                                         <field name="name" />
                                         <field name="ape" />
-                                        <field name="dni" />
-                                        <field name="telf" />
-                                        <field name="email" />
-                                        <field name="fechanacim" />
+                                        <field name="dni" groups="estetica.estetica_group_emple"/>
+                                        <field name="telf" groups="estetica.estetica_group_emple"/>
+                                        <field name="email" groups="estetica.estetica_group_emple"/>
+                                        <field name="fechanacim" groups="estetica.estetica_group_emple"/>
                                     </group>
                                 </group>
                             </page>

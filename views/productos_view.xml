@@ -24,7 +24,7 @@
                             <field name="descripcion" />
                             <field name="precio"/>
                             <field name="stock" />
-                            <field name="proveedor_id" />
+                            <field name="proveedor_id" groups="estetica.estetica_group_emple" />
                         </group>
                     </sheet>
                 </form>

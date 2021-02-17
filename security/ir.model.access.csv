@@ -1,12 +1,12 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_estetica_clientes_model,estetica.clientes_model,model_estetica_clientes_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_detfac_model,estetica.detfac_model,model_estetica_detfac_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_empleados_model,estetica.empleados_model,model_estetica_empleados_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_facturas_model,estetica.facturas_model,model_estetica_facturas_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_productos_model,estetica.productos_model,model_estetica_productos_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_proveedor_model,estetica.proveedor_model,model_estetica_proveedor_model,base.group_user,estetica_group_cli,1,1,1,1
-access_estetica_tratam_model,estetica.tratam_model,model_estetica_tratam_model,base.group_user,estetica_group_cli,1,1,1,1
+access_estetica_clientes_model,estetica.clientes_model,model_estetica_clientes_model,base.group_user,estetica_group_cli,0,0,0,0
+access_estetica_detfac_model,estetica.detfac_model,model_estetica_detfac_model,base.group_user,estetica_group_cli,0,0,0,0
+access_estetica_empleados_model,estetica.empleados_model,model_estetica_empleados_model,base.group_user,estetica_group_cli,1,0,0,0
+access_estetica_facturas_model,estetica.facturas_model,model_estetica_facturas_model,base.group_user,estetica_group_cli,0,0,0,0
+access_estetica_productos_model,estetica.productos_model,model_estetica_productos_model,base.group_user,estetica_group_cli,1,0,0,0
+access_estetica_proveedor_model,estetica.proveedor_model,model_estetica_proveedor_model,base.group_user,estetica_group_cli,0,0,0,0
+access_estetica_tratam_model,estetica.tratam_model,model_estetica_tratam_model,base.group_user,estetica_group_cli,1,0,0,0
 
 access_estetica_clientes_model,estetica.clientes_model,model_estetica_clientes_model,base.group_user,estetica_group_emple,1,1,1,1
 access_estetica_detfac_model,estetica.detfac_model,model_estetica_detfac_model,base.group_user,estetica_group_emple,1,1,1,1
