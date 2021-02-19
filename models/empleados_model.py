@@ -11,7 +11,7 @@ class empleados_model(models.Model):
 
     name = fields.Char(string="Nombre", required=True, size=20)
     ape = fields.Char(string="Apellidos", required=True, size=40)
-    dni = fields.Char(string="DNI", required=True, size=9)
+    dni = fields.Char(string="DNI", required=True, size=9, index=True)
     telf = fields.Integer(string="Teléfono", required=True, size=15)
     email = fields.Char(string="email", required=True )
     fechanacim = fields.Date(string="Fecha de Nacimiento", required=True, default=fields.Date.context_today)

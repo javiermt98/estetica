@@ -8,7 +8,7 @@ class productos_model(models.Model):
     _name = 'estetica.productos_model'
     _description = 'Productos'
 
-    name = fields.Char(string="Nombre", required=True, size=20)
+    name = fields.Char(string="Nombre", required=True, size=20, index=True)
     descripcion = fields.Char(string="Descripcion", required=True)
     precio = fields.Float(string="Precio", required=True)
     stock = fields.Integer(string="Stock")
